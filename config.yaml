@@ -1,0 +1,13 @@
+port: 8080
+healthCheckInterval: 10s
+strategy: round-robin
+backends:
+  - url: "http://localhost:8081"
+    weight: 1
+    maxConns: 100
+  - url: "http://localhost:8082"
+    weight: 2
+    maxConns: 200
+  - url: "http://localhost:8083"
+    weight: 1
+    maxConns: 100 

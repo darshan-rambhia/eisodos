@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  loadbalancer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.test
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - HEALTH_CHECK_INTERVAL=5s
+      - STRATEGY=round-robin
+    volumes:
+      - ..:/app
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/root/.cache/go-build
+    command: go test -v -race ./...
+
+  backend1:
+    image: golang:1.21-alpine
+    working_dir: /app
+    volumes:
+      - ..:/app
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/root/.cache/go-build
+    command: go run ./backend/main.go -port 8081
+    ports:
+      - "8081:8081"
+
+  backend2:
+    image: golang:1.21-alpine
+    working_dir: /app
+    volumes:
+      - ..:/app
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/root/.cache/go-build
+    command: go run ./backend/main.go -port 8082
+    ports:
+      - "8082:8082"
+
+volumes:
+  go-mod-cache:
+  go-build-cache: 

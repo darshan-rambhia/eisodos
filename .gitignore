@@ -1,0 +1,40 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build directory
+.out/
+
+# Go specific
+*.o
+*.a
+*.log
+*.tmp
+*.tmp~
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.*
+
+# Dependency directories
+/vendor/
+
+# Go workspace file
+go.work
+
+# Temporary files
+*.bak
+*.tmp
+*~ 

@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile*
+docker-compose*
+
+# IDE
+.idea
+.vscode
+
+# Build outputs
+.out/
+*.exe
+*.out
+*.test
+
+# Environment
+.env
+.env.*
+
+# OS specific
+.DS_Store
+Thumbs.db 
